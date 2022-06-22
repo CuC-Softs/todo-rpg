@@ -1,0 +1,31 @@
+version: "3.0"
+services:
+  todo_rpg_db:
+    image: postgres
+    container_name: todo_rpg_db
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+    ports:
+      - ${DB_PORT}:5432
+  todo_rpg_keycloak:
+    container_name: todo_rpg_keycloak
+    image: quay.io/keycloak/keycloak:17.0.0
+    environment:
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      DB_VENDOR: POSTGRES
+      DB_ADDR: db
+      DB_DATABASE: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_SCHEMA: public
+      DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 8543:8080
+    volumes:
+      - ./docker/keycloak/keycloak-keystore.jks:/etc/keycloak-keystore.jks
+      - ./docker/keycloak/quarkus-realm.json:/etc/quarkus-realm.json
+    depends_on:
+      - db
+    entrypoint: bash -c "/opt/keycloak/bin/kc.sh import --file /etc/quarkus-realm.json && /opt/keycloak/bin/kc.sh start-dev"
