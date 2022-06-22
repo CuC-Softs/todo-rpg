@@ -1,0 +1,18 @@
+{
+  "name": "todo-rpg",
+  "version": "1.0.0",
+  "description": "* Monorepo = (mono=1, repo=repositório)\r * DRY (Don't Repeat Yourself)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "private": true,
+  "license": "ISC",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}
