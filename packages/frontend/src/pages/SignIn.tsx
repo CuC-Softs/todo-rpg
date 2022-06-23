@@ -7,8 +7,12 @@ import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email("Email inválido").required("Email é obrigatório"),
-  password: Yup.string().required("Senha é obrigatória"),
+  email: Yup.string()
+    .email("Email inválido")
+    .required("Email é obrigatório"),
+  password: Yup.string()
+    .min(8, "A Senha precisa ter no mínimo 8 caracteres")
+    .required("Senha é obrigatória"),
 });
 
 const SignIn: React.FC = () => {
