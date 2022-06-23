@@ -8,9 +8,7 @@ const MySwal = withReactContent(Swal)
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Email inválido").required("Email é obrigatório"),
-  password: Yup.string()
-    .required("Senha é obrigatória")
-    .required("Senha é obrigatória"),
+  password: Yup.string().required("Senha é obrigatória"),
 });
 
 const SignIn: React.FC = () => {
