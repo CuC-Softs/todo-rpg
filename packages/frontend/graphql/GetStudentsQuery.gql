@@ -1,0 +1,12 @@
+
+query getStudents {
+	students {
+    nodes { 
+    	id
+      name
+      key
+      createdAt
+    }
+  }
+	
+}
