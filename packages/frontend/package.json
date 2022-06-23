@@ -9,6 +9,7 @@
     "gen": "graphql-codegen"
   },
   "dependencies": {
+    
     "@apollo/client": "^3.6.8",
     "@graphql-codegen/typescript": "^2.5.1",
     "@graphql-codegen/typescript-operations": "^2.4.2",
