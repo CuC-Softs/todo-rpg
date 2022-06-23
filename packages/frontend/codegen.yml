@@ -1,0 +1,10 @@
+schema: "http://localhost:8080/graphql"
+documents: "./graphql/*.{graphql,gql}"
+generates:
+  ./src/generated/types.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+      - "typed-document-node"
+    
